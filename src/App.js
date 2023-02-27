@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Card from "./components/card";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="card-container">
+        <Card
+          name="John Mayer"
+          job="Singer"
+          country="USA"
+          age="44"
+          networth="40M"
+        />
+        <Card
+          name="Dwayne Johnson"
+          job="actor"
+          country="USA"
+          age="49"
+          networth="320M"
+        />
+        <Card
+          name="Mike Tyson"
+          job="boxer"
+          country="USA"
+          age="55"
+          networth="10M"
+        />
+      </div>
     </div>
   );
 }
