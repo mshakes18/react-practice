@@ -1,8 +1,18 @@
+import { useState } from "react";
 import Card from "./components/card";
+import Form from "./components/form";
+// import Counter from "./components/counter";
+// import Results from "./components/results";
 
 function App() {
+  const [number, setnumber] = useState(5);
+  const addfunction = () => {
+    console.log("clicking add button");
+    setnumber(number + 2);
+  };
   return (
     <div>
+      <Form />
       <div className="card-container">
         <Card
           name="John Mayer"
