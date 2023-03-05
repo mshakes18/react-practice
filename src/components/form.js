@@ -1,69 +1,52 @@
 import { useState } from "react";
+import { useRef } from "react";
 
 function Form(props) {
-  const [firstName, setFirstName] = useState("");
-  const [job, setJob] = useState("");
-  const [country, setCountry] = useState("");
-  const [age, setAge] = useState("");
-  const [netWorth, setNetWorth] = useState("");
+  const firstNameRef = useRef();
+  const jobRef = useRef();
+  const countryRef = useRef();
+  const ageRef = useRef();
+  const netWorthRef = useRef();
 
+  function submitHandler(event) {
+    event.preventDefault();
+    const enteredName = firstNameRef.current.value;
+    const enteredJob = jobRef.current.value;
+    const enteredCountry = countryRef.current.value;
+    const enteredAge = ageRef.current.value;
+    const enteredNetWorth = netWorthRef.current.value;
+
+    const famousPersonData = {
+      firstname: enteredName,
+      job: enteredJob,
+      country: enteredCountry,
+      age: enteredAge,
+      worth: enteredNetWorth,
+    };
+
+    console.log(famousPersonData);
+  }
   return (
     <div>
-      <form>
+      <form onSubmit={submitHandler}>
         <label for="fname">Famous Persons Name:</label>
-        <input
-          value={firstName}
-          type="text"
-          id="fname"
-          name="fname"
-          onChange={(event) => {
-            setFirstName(event.target.value);
-          }}
-        ></input>
+        <input type="text" id="fname" name="fname" ref={firstNameRef}></input>
         <label for="job">Job:</label>
-        <input
-          value={job}
-          type="text"
-          id="job"
-          name="job"
-          required
-          onChange={(event) => {
-            setJob(event.target.value);
-          }}
-        ></input>
+        <input type="text" id="job" name="job" required ref={jobRef}></input>
         <label for="country">country:</label>
-        <input
-          value={country}
-          type="text"
-          id="country"
-          name="country"
-          onChange={(event) => {
-            setCountry(event.target.value);
-          }}
-        ></input>
+        <input type="text" id="country" name="country" ref={countryRef}></input>
         <label for="age">Age:</label>
-        <input
-          value={age}
-          type="text"
-          id="age"
-          name="age"
-          onChange={(event) => {
-            setAge(event.target.value);
-          }}
-        ></input>
+        <input type="text" id="age" name="age" ref={ageRef}></input>
         <label for="networth">Net Worth:</label>
         <input
-          value={netWorth}
           type="text"
           id="networth"
           name="networth"
           required
-          onChange={(event) => {
-            setNetWorth(event.target.value);
-          }}
+          ref={netWorthRef}
         ></input>
+        <button>Add Person</button>
       </form>
-      <button>Add Person</button>
     </div>
   );
 }
